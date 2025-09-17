@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Museum Kartini Jepara</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('WhatsApp Image 2025-09-16 at 07.57.05.jpeg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      position: relative;
+      color: white;
+      cursor: pointer;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      background-color: #e67e22;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #d35400;
+    }
+
+    /* Gallery Section */
+    #galeri {
+      padding: 40px 20px;
+      background-color: #f0f0f0;
+    }
+    #galeri h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .item {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .item:hover {
+      transform: scale(1.03);
+    }
+    .item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .item .desc {
+      padding: 15px;
+    }
+    .item .desc h3 {
+      margin: 0 0 10px;
+      color: #34495e;
+    }
+    .item .desc p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+    }
+    .modal-content img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #000;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+    footer p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <div class="hero" onclick="scrollToGallery()">
+    <div class="overlay">
+      <h1>Selamat Datang di Museum Kartini Jepara</h1>
+      <p>Mengenang perjuangan R.A. Kartini dan menjelajahi warisan budaya Jepara yang kaya akan sejarah dan seni.</p>
+      <a href="#galeri" class="btn">Lihat Galeri</a>
+    </div>
+  </div>
+
+  <!-- Gallery Section -->
+  <section id="galeri">
+    <h1>Galeri Kerajinan Khas Jepara</h1>
+    <div class="gallery">
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-15 at 09.14.51.', 'Ukiran Kayu','Kerajinan ukir kayu Jepara terkenal hingga mancanegara karena detail dan kehalusannya.')">
+      <img src="WhatsApp Image 2025-09-15 at 09.14.51.jpeg" alt="Ukiran Kayu Jepara">
+      <div class="desc">
+        <h3>UKIRAN KAYU</h3>
+        <p>Kerajinan ukir kayu Jepara terkenal hingga mancanegara karena detail dan kehalusannya.</p>
+      </div>
+
+
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 14.15.14.', 'Furniture Antik', 'Meja, kursi, dan lemari dari kayu jati dengan desain klasik dan ukiran khas Jepara.')">
+      <img src="WhatsApp Image 2025-09-16 at 14.15.14.jpeg" alt="Furniture Jepara">
+      <div class="desc">
+        <h3>FURNITURE ANTIK</h3>
+        <p>Meja, kursi, dan lemari dari kayu jati dengan desain klasik dan ukiran khas Jepara.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 13.30.22.', 'Botekan', 'Botekan ini milik RA Kartini ketika akan melahirkan. Benda itu disimpan dalam lemari di kamar Pengabadian nd (di Kabupaten Rembang)Foto: Sulastin S')">
+      <img src="WhatsApp Image 2025-09-16 at 13.30.22.jpeg" alt="Botekan">
+      <div class="desc">
+        <h3>BOTEKAN</h3>
+        <p>BOTEKAN (TEMPAT JAMU-JAMU JAWA) Botekan ini milik RA Kartini ketika akan melahirkan. Benda itu disimpan dalam lemari di kamar Pengabadian nd (di Kabupaten Rembang)
+Foto: Sulastin S.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-15 at 09.58.19.', 'Keramik Hias', 'Keramik dan gerabah dengan motif tradisional yang digunakan sebagai dekorasi rumah.')">
+      <img src="WhatsApp Image 2025-09-15 at 09.58.19.jpeg" alt="Keramik Jepara">
+      <div class="desc">
+        <h3>KERAMIK HIAS</h3>
+        <p>Keramik dan gerabah dengan motif tradisional yang digunakan sebagai dekorasi rumah.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-15 at 10.08.16.', 'Mesin Jahit', 'Mesin jahit kuno milik RA Kartini yang diterima sebagai hadiah dari muridnya sebagai tanda terima kasih.')">
+      <img src="WhatsApp Image 2025-09-15 at 10.08.16.jpeg" alt="Mesin Jahit">
+      <div class="desc">
+        <h3>MESIN JAHIT</h3>
+        <p>Mesin jahit kuno milik RA Kartini yang diterima sebagai hadiah dari muridnya.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-15 at 10.18.14.', 'Lukisan Tiga Angsa', 'Lukisan yang menggambarkan empat angsa sebagai simbol keluarga Kartini, dengan bingkai ukiran khas Jepara.')">
+      <img src="WhatsApp Image 2025-09-15 at 10.18.14.jpeg" alt="Lukisan Tiga Angsa">
+      <div class="desc">
+        <h3>LUKISAN TIGA ANGSA</h3>
+        <p>Lukisan simbolik keluarga Kartini dengan bingkai ukiran khas Jepara.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-15 at 10.32.48 (1).', 'Ikan Joko Tuo', 'Kerangka paus raksasa sepanjang 16 meter yang ditemukan di Karimunjawa tahun 1989.')">
+      <img src="WhatsApp Image 2025-09-15 at 10.32.48 (1).jpeg" alt="Ikan Joko Tuo">
+      <div class="desc">
+        <h3>IKAN JOKO TUO</h3>
+        <p>Kerangka paus raksasa sepanjang 16 meter yang ditemukan di Karimunjawa.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-15 at 10.11.20.', 'Grobak', 'Artefak transportasi tradisional yang menjadi bagian dari koleksi sejarah lokal Museum Kartini.')">
+      <img src="WhatsApp Image 2025-09-15 at 10.11.20.jpeg" alt="Grobak">
+      <div class="desc">
+        <h3>GROBAK</h3>
+        <p>Artefak transportasi tradisional yang menjadi bagian dari koleksi sejarah lokal.</p>
+      </div>
+    </div>
+
+
+
+    
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 14.25.05.', 'Foto R.A Kartini Bersama 5 Dari 10 Saudaranya, 1888', 'Koleksi ini merupakan foto yang berisikan R.A. Kartini semasa kecil. Dalam foto ini tampak (dari kiri atas belakang) Kartini (1879), Soelastri (1877), Rockmini (1880), serta dari depan kiri) Kartinah (1883), dan Moeljono (1885). Foto ini herisi lima dari saudar. R.A. Kartini yang manapara perempuan menggunakan kebaya sedangkan adik pria menggunakan beskap dan kesemuanya mengenakan jarik.')">
+      <img src="WhatsApp Image 2025-09-16 at 14.25.05.jpeg" alt="Foto R.A Kartini Bersama 5 Dari 10 Saudaranya, 1888">
+      <div class="desc">
+        <h3>FOTO R.A KARTINI BERSAMA 5 DARI 10 SAUDARANYA, 1888</h3>
+        <p>Koleksi ini merupakan foto yang berisikan R.A. Kartini semasa kecil. Dalam foto ini tampak (dari kiri atas belakang) Kartini (1879), Soelastri (1877), Rockmini (1880), serta dari depan kiri) Kartinah (1883), dan Moeljono (1885). Foto ini herisi lima dari saudar. R.A. Kartini yang manapara perempuan menggunakan kebaya sedangkan adik pria menggunakan beskap dan kesemuanya mengenakan jarik.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 14.30.46.', 'Bokor', 'Bokor merupakan wadah yang memiliki bentuk serupa dengan mangkuk dengan ukuran yang lebih besar. Objek ini memiliki motif hias flora pada bagian badannya. Kondisi objek secara keseluruhan masih utuh.')">
+      <img src="WhatsApp Image 2025-09-16 at 14.30.46.jpeg" alt="Bokor merupakan wadah yang memiliki bentuk serupa dengan mangkuk dengan ukuran yang lebih besar. Objek ini memiliki motif hias flora pada bagian badannya. Kondisi objek secara keseluruhan masih utuh.">
+      <div class="desc">
+        <h3>BOKOR</h3>
+        <p>Bokor merupakan wadah yang memiliki bentuk serupa dengan mangkuk dengan ukuran yang lebih besar. Objek ini memiliki motif hias flora pada bagian badannya. Kondisi objek secara keseluruhan masih utuh.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 14.38.02.', 'Kentongan', 'Kentongan terbuat dari bahan tembaga, memiliki hiasan kepala naga pada bagian atas dan ukiran dengan motif floral pada badannya. Kentongan adalah alat bunyi-bunyian terbuat dari kayu, bambu, atau logam yang memiliki rongga dibagian dalamnya. Kentongan berbentuk memanjang dengan sebuah celah yang dibuat memanjang pula. Kentongan dibunyikan dengan cara memukulmukulkan tongkat pada bagian badan dekat mulut celah. Kondisi kentongan utuh namun korosi pads beberapa bagian kentongan.')">
+      <img src="WhatsApp Image 2025-09-16 at 14.38.02.jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>KENTONGAN</h3>
+        <p>Kentongan terbuat dari bahan tembaga, memiliki hiasan kepala naga pada bagian atas dan ukiran dengan motif floral pada badannya. Kentongan adalah alat bunyi-bunyian terbuat dari kayu, bambu, atau logam yang memiliki rongga dibagian dalamnya. Kentongan berbentuk memanjang dengan sebuah celah yang dibuat memanjang pula. Kentongan dibunyikan dengan cara memukulmukulkan tongkat pada bagian badan dekat mulut celah. Kondisi kentongan utuh namun korosi pads beberapa bagian kentongan.</p>
+      </div>
+    </div>
+    <!-- Tambahkan item lain di sini -->
+
+   <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 13.30.21.', 'MA Ngasirah', ' MA Ngasirah adalah putri dari Kyai H Madirono dan Nyai Hj Siti Aminah yang dilahirkan di Desa Teluk Awur. MA Ngasirah menjadi istri pertama dari UMAA Sosroningrat yang bertugas garwo ampil (selir). Pernikahan beliau dengan RMAA Sosroningrat dikaruniai 8 orang anak.')">
+      <img src="WhatsApp Image 2025-09-16 at 13.30.21.jpeg" alt="Kerajinan Baru 4">
+      <div class="desc">
+        <h3>MA NGASIRAH</h3>
+        <p>MA Ngasirah adalah putri dari Kyai H Madirono dan Nyai Hj Siti Aminah yang dilahirkan di Desa Teluk Awur. MA Ngasirah menjadi istri pertama dari UMAA Sosroningrat yang bertugas garwo ampil (selir). Pernikahan beliau dengan RMAA Sosroningrat dikaruniai 8 orang anak.</p>
+      </div>
+</section>
+    </div>
+
+
+  <!-- Gallery Section Tambahan -->
+<section id="galeri-tambahan">
+<div class="gallery">
+
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 19.20.58.', 'Foto RA Kartini Bersama 3 Saudara Perempuannya', 'Foto dikirim ke Rosa Abendanon pada tanggal 1 Agustus 1903. Kartini menulis di bagian belakang: Kepada Ibu kecil kita yang tersayang, cinta sepenuh hati dari anak perempuanmu sendiri Foto yang dikirimkan kepada Rosa Abendanon pada tanggal 1 Agustus 1903. Kartini menulis di bagian belakang. Ke Gambar Cosle 15468.')">
+      <img src="WhatsApp Image 2025-09-16 at 19.20.58.jpeg" alt="Kerajinan Baru 1">
+      <div class="desc">
+        <h3>FOTO RA KARTINI BERSAMA 3 SAUDARA PEREMPUANNYA</h3>
+        <p>Foto dikirim ke Rosa Abendanon pada tanggal 1 Agustus 1903. Kartini menulis di bagian belakang: 'Kepada Ibu kecil kita yang tersayang, cinta sepenuh hati dari anak perempuanmu sendiri
+Foto yang dikirimkan kepada Rosa Abendanon pada tanggal 1 Agustus 1903. Kartini menulis di bagian belakang. Kepada Ibunda tercinta, cinta kasih yang tulus dari putri-putrimu.
+Perpustakaan Universitas KITIV Lesken, Gambar Cosle 15468.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 19.31.12.', 'Wadahrak tombak', 'Wadahrak tombak tongkat merupakan tempat meletakkan tombak tongkat dalam posisi vertikal. Objek ini berbentuk segi empat, memiliki dua puluh empat (24) lubang atas dan bawah, terdapat hiasan motif sulur. Wadah tombak terbuat dari kayu dengan dus kaki. Kondisi wadah tombak tongkat relatif baik.')">
+      <img src="WhatsApp Image 2025-09-16 at 19.31.12.jpeg" alt="Kerajinan Baru 2">
+      <div class="desc">
+        <h3>WADAHRAK TOMBAK</h3>
+        <p>Wadahrak tombak tongkat merupakan tempat meletakkan tombak tongkat dalam posisi vertikal. Objek ini berbentuk segi empat, memiliki dua puluh empat (24) lubang atas dan bawah, terdapat hiasan motif sulur. Wadah tombak terbuat dari kayu dengan dus kaki. Kondisi wadah tombak tongkat relatif baik.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 19.37.06.', 'Yoni bercerak', 'Yoni bercerat dengan lubang persegi di tenggah, pada cerat juga terdapat lubang kecil. Yoni merupakan sarana pemujaan umat agama hindu Yoni biasanya berkonteks dengan lingga dari kesuburan Yoni merupakan manifestasi dari genital wanita, sedangkan lingga manifestasi dari genital pria. Yoni ini dalam kondisi relatif utuh ingga yang keduanya menjadi simbol termasuk dengan ceratnya, hanya sedikit aus.')">
+      <img src="WhatsApp Image 2025-09-16 at 19.37.06.jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>YONI BERCERAK</h3>
+        <p>Yoni bercerat dengan lubang persegi di tenggah, pada cerat juga terdapat lubang kecil. Yoni merupakan sarana pemujaan umat agama hindu. Yoni biasanya berkonteks dengan lingga dari kesuburan. Yoni merupakan manifestasi dari genital wanita, sedangkan lingga manifestasi dari genital pria. Yoni ini dalam kondisi relatif utuh ingga yang keduanya menjadi simbol termasuk dengan ceratnya, hanya sedikit aus.</p>
+      </div>
+    </div>
+    <!-- Tambahkan item lain di sini -->
+
+
+
+  <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 19.51.09.', 'Prasasti', 'Prasasti ini ditemukan di puncak bukit Gunung Candi Angin Lor, tepatnya di teras ke V, berbentuk seperti balok, dengan tulisan agak sus. Belum banyak tulisan Situs memiliki tinggi 180 cm, dengan relung berukuran 40 x 50 cm dan dalam 40 cm. Candi ini vendiri telah ditemukan sejak tahun 1988 berdasarkan hasil survel BPJ Yogya. Kondisi Prasasti sebelum ditemukan, tertimbun dengan batu-batu lain yang berada di struktur paling atas teras ke-V, ditemukan oich Rohman dan Junaedi yang saat itu tengah membersihkan situs.')">
+      <img src="WhatsApp Image 2025-09-16 at 19.51.09.jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>PRASASTI</h3>
+        <p> Prasasti ini ditemukan di puncak bukit Gunung Candi Angin Lor, tepatnya di teras ke V, berbentuk seperti balok, dengan tulisan agak sus. Belum banyak tulisan Situs memiliki tinggi 180 cm, 9.jpeg', 'Prasasti', 'Prasasti ini ditemukan di puncak bukit Gunung Candi Angin Lor, tepatnya di teras ke V, berbentuk seperti balok, dengan tulisan agak sus. Belum banyak tulisan Situs memiliki tinggi 180 cm, </p>
+  </div>
+</section>
+
+<!-- Gallery Section Tambahan -->
+<section id="galeri-tambahan">
+  <div class="gallery">
+
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.06.12.', 'tungku api dari kayu', 'Foto raroduksi bergambar sekat tungku api dari kayu sono dan k Dukir dengan gambar wayang (Kamajaya dan Kamar ra, 1902. Sekat tungku api tersebut diproduksi dan didesah R.A. Kartini yang kemudian dikirimkan ke Belanda. Diantaranya untuk Rosa dan Jacques Abendanon (surat ke Rosa Abendanon 24-8-1902). Dalam keterangan dalam website kitlv.nl, koleksi foto ini diambil dari buku Door duisternis tot licht: gedachten over en voor het Javaansche volk/van wijlen Raden Adjeng Kartini (Habis Gelap Terbit-h Terang: Pemikiran tentang dan untuk orang Jawa/dari almarhum Raav Adjeng Kartini) karya J.H. Abendanom.')">
+      <img src="WhatsApp Image 2025-09-16 at 20.06.12.jpeg" alt="Kerajinan Baru 1">
+      <div class="desc">
+        <h3>TUNGKU API DARI KAYU</h3>
+        <p>Foto raroduksi bergambar sekat tungku api dari kayu sono dan k Dukir dengan gambar wayang (Kamajaya dan Kamar ra, 1902. Sekat tungku api tersebut diproduksi dan didesah R.A. Kartini yang kemudian dikirimkan ke Belanda. Diantaranya untuk Rosa dan Jacques Abendanon (surat ke Rosa Abendanon 24-8-1902). Dalam keterangan dalam website kitlv.nl, koleksi foto ini diambil dari buku Door duisternis tot licht: gedachten over en voor het Javaansche volk/van wijlen Raden Adjeng Kartini (Habis Gelap Terbit-h Terang: Pemikiran tentang dan untuk orang Jawa/dari almarhum Raav Adjeng Kartini) karya J.H. Abendanom.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.18.35.', 'Tempayan', 'Tempayan adalah wadah tradisional besar, umumnya terbuat dari tanah liat atau batu, yang berfungsi sebagai penyimpanan air, bahan makanan, dan minuman. Wujudnya bervariasi, dengan bentuk lonjong dan mulut lebar atau sempit, dan pada bagian pundaknya sering terdapat telinga untuk pegangan. Fungsi lain tempayan termasuk dalam ritual peragian tapai, masakan, bahkan sebagai tempat penyimpanan jenazah atau benda pusaka dalam kebudayaan Austronesia. ')">
+      <img src="WhatsApp Image 2025-09-16 at 20.18.35.jpeg" alt="Tempayan">
+      <div class="desc">
+        <h3>TEMPAYAN</h3>
+        <p>Tempayan adalah wadah tradisional besar, umumnya terbuat dari tanah liat atau batu, yang berfungsi sebagai penyimpanan air, bahan makanan, dan minuman. Wujudnya bervariasi, dengan bentuk lonjong dan mulut lebar atau sempit, dan pada bagian pundaknya sering terdapat telinga untuk pegangan. Fungsi lain tempayan termasuk dalam ritual peragian tapai, masakan, bahkan sebagai tempat penyimpanan jenazah atau benda pusaka dalam kebudayaan Austronesia. </p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.23.19.', 'Alat Musik Tradisional', 'Alat musik tradisional adalah instrumen musik warisan budaya yang diciptakan dan berkembang secara turun-temurun di suatu daerah, mencerminkan identitas dan nilai-nilai lokal masyarakatnya. Alat ini biasanya dibuat dari bahan alami seperti kayu atau bambu, memiliki bentuk dan desain khas, serta digunakan untuk berbagai keperluan seperti upacara adat, hiburan, atau pertunjukan seni. Cara memainkannya beragam, mulai dari dipukul, digesek, dipetik, hingga ditiup, tergantung jenis alat musiknya. ')">
+      <img src="WhatsApp Image 2025-09-16 at 20.23.19.jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>AlAT MUSIK TRADISIONAL</h3>
+        <p>Alat musik tradisional adalah instrumen musik warisan budaya yang diciptakan dan berkembang secara turun-temurun di suatu daerah, mencerminkan identitas dan nilai-nilai lokal masyarakatnya. Alat ini biasanya dibuat dari bahan alami seperti kayu atau bambu, memiliki bentuk dan desain khas, serta digunakan untuk berbagai keperluan seperti upacara adat, hiburan, atau pertunjukan seni. Cara memainkannya beragam, mulai dari dipukul, digesek, dipetik, hingga ditiup, tergantung jenis alat musiknya. </p>
+      </div>
+    </div>
+    <!-- Tambahkan item lain di sini -->
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.31.00.', 'Pedang, Arca, Meriam Gong', 'Senjata tajam dengan bilah panjang, biasanya dari logam, digunakan untuk pertarungan jarak dekat. Simbol kekuatan dan kehormatan dalam banyak budaya, Patung atau figur yang dibuat dari batu, kayu, atau logam, biasanya menggambarkan dewa, tokoh sejarah, atau makhluk mitologis. Digunakan dalam ritual atau sebagai hiasan sakral, Senjata berat berbentuk tabung panjang, digunakan untuk menembakkan proyektil besar dengan daya ledak. Di Nusantara, dikenal jenis cetbang dari era Majapahit.')">
+      <img src="WhatsApp Image 2025-09-16 at 20.31.00.jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>PEDANG, ARCA, MERIAM GONG</h3>
+        <p>
+          Senjata tajam dengan bilah panjang, biasanya dari logam, digunakan untuk pertarungan jarak dekat. Simbol kekuatan dan kehormatan dalam banyak budaya, Patung atau figur yang dibuat dari batu, kayu, atau logam, biasanya menggambarkan dewa, tokoh sejarah, atau makhluk mitologis. Digunakan dalam ritual atau sebagai hiasan sakral, Senjata berat berbentuk tabung panjang, digunakan untuk menembakkan proyektil besar dengan daya ledak. Di Nusantara, dikenal jenis cetbang dari era Majapahit.
+        </p>
+    <div >
+  </div>
+</section>
+
+<!-- Gallery Section Tambahan -->
+<section id="galeri-tambahan">
+  <div class="gallery">
+
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.44.08.', 'Papan kayu penjepit kertas', 'Objek merupakan penjepit dokumen dengan alas terbuat dari papan kayu berbentuk segi empat, sedangkan penjepitnya terbuat dari besi dalam kondisi berkarat  Hiasanya digunakan untuk menjepit buku atau dokuman saat di baca.')">
+      <img src="WhatsApp Image 2025-09-16 at 20.44.08.jpeg" alt="Kerajinan Baru 1">
+      <div class="desc">
+        <h3>PAPAN kAYU PENJEPIT KERTAS</h3>
+        <p>Objek merupakan penjepit dokumen dengan alas terbuat dari papan kayu berbentuk segi empat, sedangkan penjepitnya terbuat dari besi dalam kondisi berkarat.
+           Hiasanya digunakan untuk menjepit buku atau dokuman saat di baca.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.44.56.', 'RA Kartini dan suaminya RMAA Djoyoadiningrat', 'RA Kartini dan suaminya RMAA Djoyoadiningrat bepergian dengan kereta kuda dari stasiun kereta api di Ilembang ke rumah mereka di Kabupaten 11 Nopember 1003.')">
+    <img src="WhatsApp Image 2025-09-16 at 20.44.56.jpeg" alt="Kerajinan Baru 2">
+      <div class="desc">
+        <h3>RA KARTINI DAN SUAMINYA RMAA DJOYOADININGRAT</h3>
+        <p>RA Kartini dan suaminya RMAA Djoyoadiningrat bepergian dengan kereta kuda dari stasiun kereta api di Ilembang ke rumah mereka di Kabupaten.
+11 Nopember 1003</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.44.56', 'Almari Sosrokartono', 'Objek merupakan almari satu pintu, biasanya didgunakan sebagai tempat menyimpan barang. Pintu lemari dan sisi seberangnya terbuat dari kombinasi kayu da kaca. Pada bagian atas rak, tampak semacam vitrin tanpa kaca. Tidak tampak adanya motif hias dilemari ini.')">
+    <img src="WhatsApp Image 2025-09-16 at 20.44.56 (1).jpeg" alt="Almari Sosrokartono">
+     <div class="desc">
+        <h3>ALMARI SOSROKARTONO</h3>
+        <p>Objek merupakan almari satu pintu, biasanya didgunakan sebagai tempat menyimpan barang. Pintu lemari dan sisi seberangnya terbuat dari kombinasi kayu da kaca. Pada bagian atas rak, tampak semacam vitrin tanpa kaca. Tidak tampak adanya motif hias dilemari ini.</p>
+      </div>
+    </div>
+    <!-- Tambahkan item lain di sini -->
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-16 at 20.51.11', 'FOTO R.A. ROEKMINI, RA. KARDINAH, R.A. KARTINI, NY. HILDA. DAN PUTERA NY. HILDA', 'R.A. Kartini Pelopor emansipasi wanita Indonesia, lahir di Jepara tahun 1879. Melalui surat-suratnya,ia R.A. Kardinah Adik Kartini yang aktif di bidang kesehatan dan pendidikan.Ia adalah R.A. Roekmini Adik tiri Kartini yang menekuni seni dan pendidikan. Ia adalah Ny. Hilda Karakter fiktif dari film horor Indonesia Srigala (1981), digambarkan sebagai janda misterius yang terlibat dalam konflik demi harta. Diperankan oleh Mieke Wijaya, tokoh ini menjadi ikon dalam perfilman era tersebut. Putera Ny. Hilda')">
+      <img src="WhatsApp Image 2025-09-16 at 20.51.11 (1).jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>FOTO R.A. ROEKMINI, RA. KARDINAH, R.A. KARTINI, NY. HILDA. DAN PUTERA NY. HILDA</h3>
+        <p>R.A. Kartini
+Pelopor emansipasi wanita Indonesia, lahir di Jepara tahun 1879. Melalui surat-suratnya,ia R.A. Kardinah
+Adik Kartini yang aktif di bidang kesehatan dan pendidikan.Ia adalah R.A. Roekmini
+Adik tiri Kartini yang menekuni seni dan pendidikan. Ia adalah Ny. Hilda
+Karakter fiktif dari film horor Indonesia Srigala (1981), digambarkan sebagai janda misterius yang terlibat dalam konflik demi harta. Diperankan oleh Mieke Wijaya, tokoh ini menjadi ikon dalam perfilman era tersebut.
+Putera Ny. Hilda
+
+</p>
+  </div>
+</section>
+
+
+<!-- Gallery Section Tambahan -->
+<section id="galeri-tambahan">
+  <div class="gallery">
+
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 08.26.19.', 'LUKISAN ARIO TJONDRO IV', 'Lukisan Ario Tjondronegoro IV berpakaian Jawa dengan pose duduk di kursi. Lukisan ini dilukis oleh Waluyohadi. Lukisan menjadi 1 dengan frame kayu yang diukir motif floral. Kondisi lukisan masih bagus baik dari bingkai, cat maupun kanvasnya.')">
+    <img src="WhatsApp Image 2025-09-17 at 08.26.19.jpeg" alt="Kerajinan Baru 1">
+      <div class="desc">
+        <h3>LUKISAN ARIO TJONDRO IV</h3>
+        <p>Lukisan Ario Tjondronegoro IV berpakaian Jawa dengan pose duduk di kursi. Lukisan ini dilukis oleh Waluyohadi. Lukisan menjadi 1 dengan frame kayu yang diukir motif floral. Kondisi lukisan masih bagus baik dari bingkai, cat maupun kanvasnya.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 08.37.53.', 'Canting','Alat untuk menggoreskan lilin pada kain yang akan dibatik. Kondisi canting agak rusak pada bagian kayu maupun tembaganya. Objek tersebut merupakan alat milik R.A. Kartini untuk membatik.')">
+    <img src="WhatsApp Image 2025-09-17 at 08.37.53.jpeg" alt="Kerajinan Baru 2">
+      <div class="desc">
+        <h3>CANTING</h3>
+        <p>Alat untuk menggoreskan lilin pada kain yang akan dibatik. Kondisi canting agak rusak pada bagian kayu maupun tembaganya. Objek tersebut merupakan alat milik R.A. Kartini untuk membatik.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 08.37.54.', 'FOTO KOTAK KAYU DAN LUKISAN KARYA R.A. KARTINI', 'Objek ini merupakan foto repro yang menggambarkan kotak kayu karya RA. Kartini.  Pada foto ini terdapat kocak kayu kartini memiliki ukiran flora dan lukisan karya beliau yang menggambarkan angsa. Pengambilan foto sendiri dilakukan di Jepara tahun 1903. Objek tidak mengalami kerusakan. Pada bagian belakang terdapat stainless persegi.')">
+    <img src="WhatsApp Image 2025-09-17 at 08.37.54.jpeg" alt="FOTO KOTAK KAYU DAN LUKISAN KARYA R.A. KARTINI">
+     <div class="desc">
+        <h3>FOTO KOTAK KAYU DAN LUKISAN KARYA R.A. KARTINI</h3>
+        <p>Objek ini merupakan foto repro yang menggambarkan kotak kayu karya RA. Kartini.  Pada foto ini terdapat kocak kayu kartini memiliki ukiran flora dan lukisan karya beliau yang menggambarkan angsa.
+
+Pengambilan foto sendiri dilakukan di Jepara tahun 1903. Objek tidak mengalami kerusakan. Pada bagian belakang terdapat stainless persegi.</p>
+      </div>
+    </div>
+    <!-- Tambahkan item lain di sini -->
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 08.44.45.', 'KURSI ROTAN PANJANG', 'Koleksi berupa kursi panjang dengan rangka kayu berwarna coklat tua pada rangjanya, dan bidang duduk berupa rotan. Kursi ini memiliki kaki yang relative lurus. Diperkirakan kursi peninggalan di rumah Sosrokartono di Bandung yang sekaligus menjadi tempat praktik pengobatan.')">
+      <img src="WhatsApp Image 2025-09-17 at 08.44.45.jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>KURSI ROTAN PANJANG</h3>
+        <p>Koleksi berupa kursi panjang dengan rangka kayu berwarna coklat tua pada rangjanya, dan bidang duduk berupa rotan. Kursi ini memiliki kaki yang relative lurus.
+
+Diperkirakan kursi peninggalan di rumah Sosrokartono di Bandung yang sekaligus menjadi tempat praktik pengobatan.
+
+</p>
+  </div>
+</section>
+
+
+
+<!-- Gallery Section Tambahan -->
+<section id="galeri-tambahan">
+  <div class="gallery">
+
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 09.11.42.', 'JAMBANGAN', 'Jambangan merupakan vas berukuran besar dan tingui. Jambangan ini berbentuk seperti periuk besar yang berbahan porselen. Jambangan ini berbentuk oval dengan glasir coklat tua gelap, hiasan cokelat muda, motif bias fauna (binatang mitologi), warna bagian dalam bijau telur asin, terdapat semen pada ujung dan labang pada dasar jambangan. Kondisi hiasan pada sisi luar jantungan sud sudah memudar.')">
+    <img src="WhatsApp Image 2025-09-17 at 09.11.42.jpeg" alt="Kerajinan Baru 1">
+      <div class="desc">
+        <h3>JAMBANGAN</h3>
+        <p>Jambangan merupakan vas berukuran besar dan tingui. Jambangan ini berbentuk seperti periuk besar yang berbahan porselen. Jambangan ini berbentuk oval dengan glasir coklat tua gelap, hiasan cokelat muda, motif bias fauna (binatang mitologi), warna bagian dalam bijau telur asin, terdapat semen pada ujung dan labang pada dasar jambangan. Kondisi hiasan pada sisi luar jantungan sud sudah memudar.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 09.11.41.', 'KARYA TIGA SERANGKAI','Lukisan yang bergambar bunga teratai dibuat oleh RA Kartini, Kucing dibuat oleh RA Kardinah, dan Sebuah lukisan pantai dibuat RA Roekmini.')">
+    <img src="WhatsApp Image 2025-09-17 at 09.11.41.jpeg" alt="Kerajinan Baru 2">
+      <div class="desc">
+        <h3>KARYA TIGA SERANGKAI</h3>
+        <p>Lukisan yang bergambar bunga teratai dibuat oleh RA Kartini, Kucing dibuat oleh RA Kardinah, dan Sebuah lukisan pantai dibuat RA Roekmini.</p>
+      </div>
+    </div>
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 09.11.41 (2).', 'FOTO R.Μ.Α.Α. SOSRONINGRAT DAN SAUDARA LAKI-LAKINYA','Foto reproduksi menggambarkan R.M.A.A. Sosroningrat (ayah kartini) yang berdiri disebelah kiri dengan tiga orang saudaranya. Dalam foto tersebut terdapat R.M.A.A. Trenggono Purbaningrat (Bupati Demak tahun 1866-1881. Bupati Semarang tahun 1881-1883), R.M.A.A. Hadiningrat (Bupati Demak tahun 1881-1915), dan R.M.A.A. Prawoto Condronegoro (R.M.A.A. Purwolelono, Bupati Kudus tahun 1856-1879, Bupati Brebes tahun 1879-1885). Para privayi tersebut tampak memakai beskaplengkap dengan jarik, blangkon, dan kerisnya.')">
+    <img src="WhatsApp Image 2025-09-17 at 09.11.41 (2).jpeg" alt="Kerajinan Baru 2">
+      <div class="desc">
+        <h3>FOTO R.Μ.Α.Α. SOSRONINGRAT DAN SAUDARA LAKI-LAKINYA</h3>
+        <p>Foto reproduksi menggambarkan R.M.A.A. Sosroningrat (ayah kartini) yang berdiri disebelah kiri dengan tiga orang saudaranya. Dalam foto tersebut terdapat R.M.A.A. Trenggono Purbaningrat (Bupati Demak tahun 1866-1881. Bupati Semarang tahun 1881-1883), R.M.A.A. Hadiningrat (Bupati Demak tahun 1881-1915), dan R.M.A.A. Prawoto Condronegoro (R.M.A.A. Purwolelono, Bupati Kudus tahun 1856-1879, Bupati Brebes tahun 1879-1885). Para privayi tersebut tampak memakai beskaplengkap dengan jarik, blangkon, dan kerisnya.</p>
+      </div>
+      </div>
+    <!-- Tambahkan item lain di sini -->
+
+    <div class="item" onclick="openModal('WhatsApp Image 2025-09-17 at 10.24.55. (2).', 'Foto repro sekolah gadis', 'Foto repro sekolah gadis asli di belakang Pendopo Jepara, terbuat dari bahan akrilik. Sekolah pertama yang didirikan oleh RA Kartini di Jepara. Roekmini berdiri di sebelah kiri papan tulis, Kartini berada di sebelah kanan. Anak-anak yang bersekolah di sekolah khusus (gadis) jawa duduk di bagian depan. Di sekolah tersebut diajarkan pelajaran menjahit, menyulam, memasak, dan sebagainya. Semuanya itu diberikannya tanpa memungut bayaran alias cuma cuma. Kondisi foto repro utuh.')">
+      <img src="WhatsApp Image 2025-09-17 at 10.24.55.jpeg" alt="Kerajinan Baru 3">
+      <div class="desc">
+        <h3>FOTO REPRO SEKOLAH GADIS</h3>
+        <p>Foto repro sekolah gadis asli di belakang Pendopo Jepara, terbuat dari bahan akrilik. Sekolah pertama yang didirikan oleh RA Kartini di Jepara. Roekmini berdiri di sebelah kiri papan tulis, Kartini berada di sebelah kanan. Anak-anak yang bersekolah di sekolah khusus (gadis) jawa duduk di bagian depan. Di sekolah tersebut diajarkan pelajaran menjahit, menyulam, memasak, dan sebagainya. Semuanya itu diberikannya tanpa memungut bayaran alias cuma cuma. Kondisi foto repro utuh 
+
+        </p>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <center>
+    <h2>Museum Kartini Jepara</h2>
+    <p>
+      Jalan Alun-Alun No.1, Jepara, Jawa Tengah<br>
+      Telp: (0291) 591123 | Email: info@museumkartini.id
+    </p>
+    <p>&copy; 2025 Museum Kartini Jepara. Semua hak dilindungi.</p>
+    </center>
+  </footer>
+  
+
+  <!-- JavaScript -->
+  <script>
+    function scrollToGallery() {
+      document.getElementById("galeri").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function openModal(imgSrc, title, desc) {
+      document.getElementById("modalImg").src = imgSrc;
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalDesc").innerText = desc;
+      document.getElementById("modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("modal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+<center>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en"
+<head>
+    <body>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.466367617311!2d110.66486577356007!3d-6.5888071644057336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e711f1d1e58c06d%3A0xd8b214437825ecda!2sMuseum%20RA%20Kartini%20Jepara!5e0!3m2!1sid!2sid!4v1757920163036!5m2!1sid!2sid" width="800" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+        </iframe>"
+    </body>
+<html>
+  </center>
+  
+
+
+
+
+  <style>
+  .gallery::-webkit-scrollbar {
+    height: 8px;
+  }
+  .gallery::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+</style>
+
+
+
+
+
+
+
+

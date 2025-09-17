@@ -1,0 +1,49 @@
+.hero {
+  background-image: url('WhatsApp Image 2025-09-16 at 07.57.05.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  color: white;
+  cursor: pointer;
+}
+
+
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 250px;
+}
+
+
+
+.gallery::-webkit-scrollbar {
+  height: 8px;
+}
+.gallery::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 600px;
+  gap: 20px;
+}
+
+
+
+
+
